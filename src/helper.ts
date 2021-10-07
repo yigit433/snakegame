@@ -16,7 +16,7 @@ export const SetOptions = ((defOptions: Options | any, newOptions: Options | any
   return out;
 });
 export const CreateMap = ((options: Options): MapPart[] => {
-  const out: MapPart[] | [] = Array(100).fill({
+  const out: MapPart[] | [] = Array(options.height * options.width).fill({
     part: options.background,
     x: 0,
     y: options.height - 1
