@@ -1,0 +1,32 @@
+{
+  "name": "@yigitsh/snakegame",
+  "version": "0.1.0",
+  "description": "You can make Snake game in a simple way.",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "compile": "tsc",
+    "docs": "typedoc src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SherlockYigit/snakegame.git"
+  },
+  "keywords": [
+    "snakegame",
+    "snake",
+    "game"
+  ],
+  "author": "SherlockYigit",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SherlockYigit/snakegame/issues"
+  },
+  "homepage": "https://github.com/SherlockYigit/snakegame#readme",
+  "devDependencies": {
+    "@types/node": "^16.6.1",
+    "ts-node": "^10.2.0",
+    "typedoc": "^0.21.5",
+    "typescript": "^4.3.5"
+  }
+}
