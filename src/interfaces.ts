@@ -1,10 +1,10 @@
 export interface Options {
-  snake_head?: string;
-  snake_tail?: string;
-  background?: string;
-  food?: string;
-  width?: number;
-  height?: number;
+  snake_head: string;
+  snake_tail: string;
+  background: string;
+  food: string;
+  width: number;
+  height: number;
 }
 export interface MapPart {
   part: string;
@@ -13,6 +13,7 @@ export interface MapPart {
 }
 export interface Data {
   ID: string;
-  map: MapPart[];
+  score: number;
+  parts: MapPart[];
   createdAt: Date | number;
 }
