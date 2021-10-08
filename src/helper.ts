@@ -20,19 +20,23 @@ export const CreateMap = ((options: Options): MapPart[] => {
     part: options.background,
     x: 0,
     y: options.height - 1
-  }).map((d: MapPart, i: number, arr: MapPart[] | []) => {
-    let part: string = options.background;
- 
-    if (!arr.some((_part: MapPart) => (_part.part === options.snake_head) || (_part.part === options.food))) {
-      part = arr.some((_part: MapPart) => (_part.part === options.snake_head)) ? options.food : options.snake_head; 
-    }
+  }).map((d: MapPart, i: number): MapPart => ({
+    ...d,
+    x: i % options.width,
+    y: i % options.height === (options.height - 1) ? d.y-- : d.y
+  }));
+  const snake_index: number = Math.floor(Math.random() * out.length);
+  
+  out[snake_index].part = options.snake_head;
+  
+  const filtered_snake: MapPart[] | [] = out.filter((val: MapPart) => (
+    !(val.x == out[snake_index].x && out[snake_index].y == out[snake_index].y)
+  ));
 
-    return ({
-      part,
-      x: i % options.width,
-      y: i % options.height === (options.height - 1) ? d.y-- : d.y
-    });
-  });
+  let food_index: number = Math.floor(Math.random() * filtered_snake.length);
+  food_index = out.findIndex((val: MapPart) => val.x == filtered_snake[food_index].x && val.y == filtered_snake[food_index].y);
+ 
+  out[food_index].part = options.food;
 
   return out;
 });
