@@ -7,7 +7,7 @@ You can make Snake game in a simple way. Don't forget to review [documentation](
   "snake_head": "🟩",
   "snake_tail": "🟩",
   "background": "🟫",
-  "food: "🥝",
+  "food": "🥝",
   "width": 10,
   "height": 1
 }
