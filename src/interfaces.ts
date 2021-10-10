@@ -23,5 +23,5 @@ export interface Data {
   reason?: string;
   game_map: MapPart[];
   snake_parts: Coordinate[];
-  createdAt: Date | number;
+  createdAt: number;
 }
