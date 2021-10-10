@@ -34,18 +34,26 @@ class SnakeGame {
 
     return ResizeMap(this.options, mapparts);
   }
-  moveSnake(ID: string, newCoordinate: Coordinate): Data {
+  moveSnake(ID: string, newCoordinate: Coordinate): string[] | Data {
     if (!ID) throw new Error("You need to specify an Id!");
     if (!newCoordinate) throw new Error("You need to specify a Coordinate!");
     const result: Data = MoveSnake(this.options, newCoordinate, this.getData(ID) as Data);
     
-    if (result.end) this.endGame(ID);
+    if (result.end) {
+      this.endGame(ID);
 
-    return result;
+      return result;
+    } else {
+      const dataIndex = this.database.findIndex((d: Data) => d.ID === ID);
+
+      this.database[dataIndex] = result;
+
+      return ResizeMap(this.options, result.game_map);
+    }
   }
-  getData(ID: string): Data | boolean {
+  getData(ID: string): Data | undefined {
     if (!ID) throw new Error("You need to specify an Id!");
-    const res = this.database.find((d: Data) => d.ID === ID) ?? false;
+    const res = this.database.find((d: Data) => d.ID === ID);
 
     return res;
   }

@@ -1,6 +1,6 @@
 {
   "name": "@yigitsh/snakegame",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "You can make Snake game in a simple way.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
