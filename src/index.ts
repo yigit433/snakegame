@@ -1,4 +1,4 @@
-import { SetOptions, CreateMap } from "./helper";
+import { SetOptions, CreateMap, ResizeMap } from "./helper";
 import { Options, Data, MapPart } from "./interfaces";
 
 const defaultOptions: Options = ({
@@ -12,7 +12,7 @@ const defaultOptions: Options = ({
 
 class SnakeGame {
   options: Options;
-  database: Data[] | [];
+  database: Data[];
   constructor(options: Options | any = defaultOptions) {
     this.options = SetOptions(defaultOptions, options);
 
@@ -22,7 +22,17 @@ class SnakeGame {
     if (!ID) throw new Error("You need to specify an Id!");
     const mapparts: MapPart[] = CreateMap(this.options);
 
-    return mapparts
+    const data: Data = ({
+      ID,
+      score: 0,
+      game_map: mapparts,
+      snake_parts: mapparts.filter((val: MapPart) => [this.options.snake_head, this.options.snake_tail].includes(val.part)).map((val: MapPart) => ({ x: val.  x, y: val.y })),
+      createdAt: Date.now()
+    });
+ 
+    this.database.push(data);
+
+    return ResizeMap(this.options, mapparts);
   }
 }
 export default SnakeGame;

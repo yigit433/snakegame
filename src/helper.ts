@@ -40,3 +40,12 @@ export const CreateMap = ((options: Options): MapPart[] => {
 
   return out;
 });
+export const ResizeMap = ((options: Options, parts: MapPart[]): string[] => {
+  const out: string[] = [];
+
+  while(parts.length) {
+    out.push(parts.splice(0, options.width).map((val: MapPart):string => val.part).join(""));
+  } 
+
+  return out;
+});

@@ -11,9 +11,17 @@ export interface MapPart {
   x: number;
   y: number;
 }
+export interface Coordinate {
+  x: number;
+  y: number;
+}
 export interface Data {
   ID: string;
   score: number;
-  parts: MapPart[];
+  fail?: boolean;
+  end?: boolean;
+  reason?: string;
+  game_map: MapPart[];
+  snake_parts: Coordinate[];
   createdAt: Date | number;
 }
